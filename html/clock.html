@@ -74,7 +74,7 @@ function success(position) {
         location.innerHTML = data.name + " (" + latitude + "°, " + longitude + "°)";
         description.innerHTML = data.weather[0].main;
         document.getElementById("location").innerText = "Location: "+ data.name;
-        document.getElementById("temp_max").innerText = "Minimum temperature is " + data.main.temp_max;
+        document.getElementById("temp_max").innerText = "Maximum temperature is " + data.main.temp_max;
         document.getElementById("temp_min").innerText = "Minimum temperature is " + data.main.temp_min;
 
 
