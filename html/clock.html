@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIGITAL CLOCK</title>
+    <link rel="stylesheet" href="../css/clock.css">
+</head>
+<body>
+    
+    <h1 id="clock"></h1>
+    <h2 id="date"></h2>
+    <h2 id="day"></h2>
+    <h1 id="temperature"></h1>
+    <h2 id="description"></h2>
+    <h5 id="location"></h5>
+    <p id="temp_max"></p>
+    <p id="temp_min"></p>
+</body>
+<script>
+    function currentDate(){
+    var dt = new Date();
+
+// ensure date comes as 01, 09 etc
+var DD = ("0" + dt.getDate()).slice(-2);
+
+// getMonth returns month from 0
+var MM = ("0" + (dt.getMonth() + 1)).slice(-2);
+
+var YYYY = dt.getFullYear();
+
+var hh = ("0" + dt.getHours()).slice(-2);
+
+var mm = ("0" + dt.getMinutes()).slice(-2);
+
+document.getElementById("date").innerText = YYYY + "-" + MM + "-" + DD ; 
+    }
+currentDate();
+
+</script>
+
+<script>
+    function getWeather() {
+  let temperature = document.getElementById("temperature");
+  let description = document.getElementById("description");
+  let location = document.getElementById("location");
+}
+
+let api = "https://api.openweathermap.org/data/2.5/weather";
+let apiKey = "77c341c35bc2196f890787a5fc891f3a";
+location.innerHTML = "Locating...";
+
+navigator.geolocation.getCurrentPosition(success, error);
+function success(position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+
+    let url =
+      api +
+      "?lat=" +
+      latitude +
+      "&lon=" +
+      longitude +
+      "&appid=" +
+      apiKey +
+      "&units=imperial";
+      
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        let temp = data.main.temp;
+        temperature.innerHTML = temp + "° F";
+        location.innerHTML = data.name + " (" + latitude + "°, " + longitude + "°)";
+        description.innerHTML = data.weather[0].main;
+        document.getElementById("location").innerText = "Location: "+ data.name;
+        document.getElementById("temp_max").innerText = "Minimum temperature is " + data.main.temp_max;
+        document.getElementById("temp_min").innerText = "Minimum temperature is " + data.main.temp_min;
+
+
+
+      });
+  }
+ 
+
+  function error() {
+    location.innerHTML = "Unable to retrieve your location";
+  }
+
+
+getWeather();
+
+
+</script>
+
+<script>
+    function currentTime() {
+  var date = new Date(); /* creating object of Date class */
+  
+        
+  var hour = date.getHours();
+  var min = date.getMinutes();
+  var sec = date.getSeconds();
+  var midday = "AM";
+  midday = (hour >= 12) ? "PM" : "AM"; /* assigning AM/PM */
+  hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12): hour); /* assigning hour in 12-hour format */
+  hour = updateTime(hour);
+  min = updateTime(min);
+  sec = updateTime(sec);
+document.getElementById("clock").  innerText = hour + " : " + min + " : " + sec + " " + midday; /* adding time to the div */
+    var t = setTimeout(currentTime, 1000); /* setting timer */
+}
+
+function updateTime(k) { /* appending 0 before time elements if less than 10 */
+  if (k < 10) {
+    return "0" + k;
+  }
+  else {
+    return k;
+  }
+}
+
+currentTime();
+
+
+</script>
+
+<script>
+    function currentDay(){
+        var myDate = new Date(); 
+        var myDay = myDate.getDay();
+        
+        // Array of days. 
+        var weekday = ['Sunday', 'Monday', 'Tuesday', 
+            'Wednesday', 'Thursday', 'Friday', 'Saturday' 
+        ]; 
+        document.getElementById("day").innerText=("Today is: " + weekday[myDay]); 
+    }
+        currentDay();
+</script>
+</html>

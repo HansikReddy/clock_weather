@@ -1,0 +1,71 @@
+body {
+    background-color: #bef1f8;
+  }
+  
+  
+  #clock {
+    font-family: 'Times New Roman', Times, serif;
+    color: #2305a8;
+    font-size: 75px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  #date {
+    font-family: 'Orbitron', sans-serif;
+    color: #097705;
+    font-size: 65px;
+    text-align: center;
+   }
+
+  #day {
+    font-family: 'Orbitron', sans-serif;
+    color: #796705;
+    font-size: 65px;
+    text-align: center;
+    padding-top: 5px;
+    
+  }
+
+  #temperature{
+    font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  font-size: 56px;
+  margin: 0 auto;
+  color:#f4c430;
+  }
+
+  #description{
+    font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  font-size: 56px;
+  margin: 0 auto;
+  color: #f4c430;
+  }
+
+  #location{
+    font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  font-size: 56px;
+  margin: 0 auto;
+  color: rgb(235, 32, 59);
+  }
+  #temp_max{
+    font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  font-size: 30px;
+  margin: 0 auto;
+  color: rgb(235, 32, 59);
+  }
+  #temp_min{
+    font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  font-size: 30px;
+  margin: 0 auto;
+  color: rgb(235, 32, 59);
+  }
+  
+  
+  
+  
